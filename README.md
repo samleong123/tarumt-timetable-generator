@@ -4,6 +4,9 @@ Generate iCalendar (.ics) file from the student timetable of Tunku Abdul Rahman 
 ## What is this?
 Experience convenience with the "TARUMT Timetable Generator" app, fully open source on GitHub. It automatically retrieves your timetable from Tunku Abdul Rahman University of Management and Technology (TARUMT)'s app, generating an iCalendar (.ics) file. Import it effortlessly into Google Calendar and other compatible apps for seamless organization of your class timetable.
 
+## How to use?
+Click the dashboard at the top of this website, and log in to the dashboard using your User ID and Password that you used to log in to TARUMT's Intranet and TARC App. After a successful login, please read the disclaimer and click the "Generate" button to generate the iCalendar (.ics) file.
+
 ## How is it working?
 It will require users to log in with their TARCApp user ID and password on this website. The website will then request the following details from TARCApp:
 1. Token
@@ -35,3 +38,6 @@ It contains the following :
 3. Class Code (e.g. AJEL1713)
 4. Class Lecturer Name
 5. Class Location (e.g. K101 Block K)
+
+## Screenshot
+![image](https://github.com/samleong123/tarumt-timetable-generator/assets/58818070/fa1e4339-6448-45f5-b2a7-8795b82e22be)

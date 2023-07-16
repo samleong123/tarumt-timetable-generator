@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard - TARUMT Timetable Generator</title>
+    <link rel="canonical" href="https://tarumt-calendar.samsam123.name.my/dashboard.html">
+    <meta property="og:url" content="https://tarumt-calendar.samsam123.name.my/dashboard.html">
+    <meta name="description" content="Experience convenience with the &quot;TARUMT Timetable Generator&quot; app, fully open source on GitHub. It automatically retrieves your timetable from Tunku Abdul Rahman University of Management and Technology (TARUMT)'s app, generating an iCalendar (.ics) file. Import it effortlessly into Google Calendar and other compatible apps for seamless organization of your class timetable.">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css?h=f2227b17fa6c7a34bd10412e47a7658b">
+    <link rel="stylesheet" href="/assets/css/Nunito.css?h=3f66341d07496756d5b034241e33abeb">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-expand bg-white shadow mb-4 topbar static-top navbar-light">
+                    <div class="container-fluid">
+                        <h4>TARUMT Timetable Generator</h4>
+                        <ul class="navbar-nav flex-nowrap ms-auto">
+                            <li class="nav-item dropdown no-arrow">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small" id="studentname">&nbsp;</span></a>
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                                </div>
+                            </li>
+                        </ul><a class="btn btn-primary btn-sm" role="button" href="/dashboard.html" onclick="generateICS();"><i class="fas fa-user text-white-50 fa-sm"></i>&nbsp; Dashboard</a>
+                    </div>
+                </nav>
+                <div class="container-fluid" data-aos="fade-up">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-dark mb-0">Dashboard</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>STUDENT NAME</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="studentnamebig"></span></div>
+                                        </div>
+                                        <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" class="fa-2x text-gray-300">
+                                                <path d="M4 14V20H10V18H6V14H4Z" fill="currentColor"></path>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9 9V15H15V9H9ZM13 11H11V13H13V11Z" fill="currentColor"></path>
+                                                <path d="M4 10V4H10V6H6V10H4Z" fill="currentColor"></path>
+                                                <path d="M20 10V4H14V6H18V10H20Z" fill="currentColor"></path>
+                                                <path d="M20 14V20H14V18H18V14H20Z" fill="currentColor"></path>
+                                            </svg></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-success py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>STUDENT ID</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="studentid"></span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-id-card fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-info py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>STUDENT EMAIL</span></div>
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col">
+                                                    <div class="text-dark fw-bold h5 mb-0 me-3"><span id="studentemail"></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><i class="icon ion-email fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-warning py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>USED DEVICE ID</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="deviceid"></span></div>
+                                        </div>
+                                        <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20" fill="none" class="fa-2x text-gray-300">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7 2C5.89543 2 5 2.89543 5 4V16C5 17.1046 5.89543 18 7 18H13C14.1046 18 15 17.1046 15 16V4C15 2.89543 14.1046 2 13 2H7ZM10 16C10.5523 16 11 15.5523 11 15C11 14.4477 10.5523 14 10 14C9.44772 14 9 14.4477 9 15C9 15.5523 9.44772 16 10 16Z" fill="currentColor"></path>
+                                            </svg></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-4">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h6 class="text-primary fw-bold m-0">Generate iCalendar File</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>Disclaimer:<br><br>By generating the iCalendar (.ics) file through this website, your user ID and password will be used to access TARCApp's API and retrieve all class details. This website will <strong>NEVER STORE</strong> any personal information on the server. However, it will store the following information via browser's local storage for future login usage:<br>1. Token<br>2. Student Name<br>3. Used Device ID<br>4. Used Device<br>5. Student Email<br>6. Student ID</p>
+                            <div class="text-center"><a class="btn btn-primary btn-lg" role="button" href="#" onclick="generateICS();"><i class="fas fa-download text-white-50 fa-sm"></i>&nbsp;Generate iCalendar File</a>
+                                <p id="notes"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Sam Sam<br><br>Source Code :&nbsp;<a href="https://github.com/samleong123/tarumt-timetable-generator" target="_blank" rel="author">Github</a><br><br>Please note that this website is not affiliated with Tunku Abdul Rahman University of Management and Technology (TARUMT).<br><br></span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="/assets/js/bs-init.js?h=d0c6de1d0ecd5065d55e7b94664b5b10"></script>
+    <script src="/assets/js/dashboard.js?h=36711d911f9e6633deabc306dce411c8"></script>
+    <script src="/assets/js/theme.js?h=79f403485707cf2617c5bc5a2d386bb0"></script>
+</body>
+
+</html>

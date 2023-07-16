@@ -40,4 +40,5 @@ It contains the following :
 5. Class Location (e.g. K101 Block K)
 
 ## Screenshot
-![image](https://github.com/samleong123/tarumt-timetable-generator/assets/58818070/fa1e4339-6448-45f5-b2a7-8795b82e22be)
+![image](https://github.com/samleong123/tarumt-timetable-generator/assets/58818070/6226eb18-a6a4-4fa5-86d1-d83838a2bd0b)
+

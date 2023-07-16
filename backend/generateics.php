@@ -54,7 +54,7 @@ $weeks = $resp["weeks"];
 $weeksarray = array_slice($weeks, 1);
 
 // Set header to download 
-header('Content-type: text/calendar; charset=utf-8');
+header('Content-Type: text/calendar; charset=utf-8');
 header('Content-Disposition: attachment; filename="'.$studentname.'-'.$timestamp.'.ics"');
 header('Access-Control-Allow-Origin: *');
 

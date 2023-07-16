@@ -6,6 +6,7 @@ require('./config.php');
 if (empty($token)){
     $messagearray = array("Title"=>"Invalid request","Message"=>"Invalid Request. Please relogin with valid username and password.","Requested_Time"=>$date_MST);
     $json = array("Status"=>"Fail","Data"=>$messagearray);
+    http_response_code(401);
     header('Content-type: application/json');  header('Access-Control-Allow-Origin: *');
     echo (json_encode($json));
     exit();

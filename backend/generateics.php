@@ -119,6 +119,12 @@ foreach ($class as $classdata){
     $classlecturer = $classdata["fstaffname"];
     $classtype = $classdata["fclasstype"];
     $classlocation = $classdata["froom"];
+    $replacementclass = $classdata["replace"];
+
+    // Add replacement class into class name
+    if ($replacementclass == "Y"){
+        $classname = '[REPLACEMENT] '.$classname;
+    }
 
     // Convert Class Time to valid ICS format
 
